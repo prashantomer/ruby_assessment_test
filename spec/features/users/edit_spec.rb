@@ -32,10 +32,13 @@ RSpec.feature 'Show Users' do
     context 'kind related errors' do
       scenario 'when a teacher wants to be set a student' do
         visit edit_user_path(teacher_1)
-  
-        select('Student', from: "user_kind")
+
+        # select('Student', from: 'user_kind', wait: 10, visible: false)
+        # within('#kind_selector') do
+          select('Student', from: 'user_kind', wait: 10)
+        # end
         click_on 'Update User'
-  
+
         expect(page).to have_text(
           "Kind can not be student because is teaching in at least one program"
         )
@@ -44,10 +47,10 @@ RSpec.feature 'Show Users' do
 
       scenario 'when a student wants to be set as a teacher' do
         visit edit_user_path(user_1)
-  
+
         select('Teacher', from: "user_kind")
         click_on 'Update User'
-  
+
         expect(page).to have_text(
           "Kind can not be teacher because is studying in at least one program"
         )

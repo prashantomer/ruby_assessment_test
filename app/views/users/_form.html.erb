@@ -21,7 +21,7 @@
     <%= form.number_field :age %>
   </div>
 
-  <div>
+  <div id="kind_selector">
     <%= form.label :kind, style: "display: block" %>
     <%= form.select :kind, User.kinds.keys.map{ |key| [key.humanize, key] } %>
   </div>

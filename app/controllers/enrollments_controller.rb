@@ -65,6 +65,6 @@ class EnrollmentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def enrollment_params
-      params.require(:enrollment).permit(:user_id, :teacher_id)
+      params.require(:enrollment).permit(:user_id, :teacher_id, :program_id, :favorite)
     end
 end
