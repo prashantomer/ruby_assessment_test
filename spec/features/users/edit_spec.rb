@@ -33,10 +33,7 @@ RSpec.feature 'Show Users' do
       scenario 'when a teacher wants to be set a student' do
         visit edit_user_path(teacher_1)
 
-        # select('Student', from: 'user_kind', wait: 10, visible: false)
-        # within('#kind_selector') do
-          select('Student', from: 'user_kind', wait: 10)
-        # end
+        select('Student', from: 'user_kind')
         click_on 'Update User'
 
         expect(page).to have_text(
