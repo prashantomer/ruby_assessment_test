@@ -19,7 +19,7 @@ class User < ApplicationRecord
   }
 
   scope :favorites, -> { where(enrollments: {favorite: true}) }
-  scope :classmates, -> (user){ includes(:student_programs).where(programs: { id: user.student_programs.select(:id) }).where.not(id: user.id) }
+  scope :classmates, -> (user){ joins(:student_programs).where(programs: { id: user.student_programs.select(:id) }).where.not(id: user.id).distinct }
 
   validate :change_of_kind
 
